@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Desintegracion radioactiva</title>
+    <script src="Logica.js"></script>
+    <link rel="stylesheet" type="text/css" href="Estilos.css">
+</head>
+
+<body>
+    <h1>Desintegración radioactiva</h1>
+
+    <label>Asegurate de llenar al menos un valor</label>
+
+    <div class="calculos">
+        <label for="N0">Cantidad Inicial N<sub>0</sub>:</label>
+        <input type="text" id="n0">
+    </div>
+
+    <div class="calculos">
+        <label for="K">Constante de Desintegracion K:</label>
+        <input type="text" id="K">
+    </div>
+
+    <div class="calculos">
+        <label for="tHalf">Periodo de semidesintegracion t <sup>1</sup>/<sub>2</sub>:</label>
+        <input type="text" id="t1/2">
+    </div>
+
+    <div class="calculos">
+        <label for="Nt">Nt:</label>
+        <input type="text" id="Nt">
+        <label for="t">t:</label>
+        <input type="text" id="t">
+    </div>
+
+    <div class="calculos">
+        <label for="T">Vida media T:</label>
+        <input type="text" id="T">
+    </div>
+
+    <h2>Realizar los cálculos</h2>
+
+    <div id="resultados">
+        <div style="text-align: center;">
+            <button id="btnCalculo_K" onclick="calculoK()">Calcular K</button>
+            <button id="btnCalculo_tHalf" onclick="calculoThalf()">Calcular t1/2</button>
+            <button id="btnCalculoT" onclick="calculoT()">Calcular T</button>
+            <button id="btnCalculoNt" onclick="calculoNt()">Calcular Nt</button>
+            <button id="btnCalculoTiempo" onclick="calculoTiempo()">Calcular t</button>
+        </div>
+    </div>
+
+
+    <div class="Tiempo" id="divTiempo" style="display: none;">
+        <h2>¿Cuánta cantidad se ha desintegrado?</h2>
+        <select id="cuantoPoCSelect">
+            <option value="Porcentaje">Porcentaje</option>
+            <option value="Cantidad">Cantidad</option>
+        </select>
+        <input type="text" id="cuantoPoC">
+    </div>
+
+
+    <div class="Tiempo" id="divQueda" style="display: none;">
+        <h2>¿Cuánta cantidad queda?</h2>
+        <select id="cuantoQuedaSelect">
+            <option value="Porcentaje">Porcentaje</option>
+            <option value="Cantidad">Cantidad</option>
+        </select>
+        <input type="text" id="cuantoQueda">
+    </div>
+
+
+    <!-- Agrega este elemento HTML en tu página -->
+    <br>
+    <span>Resultado n0: </span>
+    <span id="resultadon0">0</span> <br>
+    <br>
+    <span>Resultado K: </span> 
+    <span id="resultadoK">0</span><br>
+    <br>
+    <span id="resultadot1/2">Resultado t1/2: </span><br>
+    <br>
+    <span id="resultadoNt">Resultado Nt: </span><br>
+    <br>
+    <span id="resultadot">Resultado t: </span><br>
+    <br>
+    <span id="resultadoT">Resultado T: </span><br>
+
+</body>
+
+</html>
