@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desintegracion radioactiva</title>
     <script src="Logica.js"></script>
     <link rel="stylesheet" type="text/css" href="Estilos.css">
@@ -12,6 +15,16 @@
 
     <label>Asegurate de llenar al menos un valor</label>
 
+    <div class="comboTiempo"style="text-align: center;">
+        <label>Escoge un tiempo para tus calculos<label>
+        <select id="tiempoGeneral">
+            <option value="Horas">Horas</option>
+            <option value="Dias">Dias</option>
+            <option value="Años">Años</option>
+        </select>
+        <button id="submitTime" onclick=inhabilitarTiempo()>Enviar</button>
+    </div>
+
     <div class="calculos">
         <label for="N0">Cantidad Inicial N<sub>0</sub>:</label>
         <input type="text" id="n0">
@@ -20,23 +33,19 @@
     <div class="calculos">
         <label for="K">Constante de Desintegracion K:</label>
         <input type="text" id="K">
+        <label for="tiempoK" id="tiempoK">t<sup>-1</sup></label>
     </div>
 
     <div class="calculos">
         <label for="tHalf">Periodo de semidesintegracion t <sup>1</sup>/<sub>2</sub>:</label>
         <input type="text" id="t1/2">
-    </div>
-
-    <div class="calculos">
-        <label for="Nt">Nt:</label>
-        <input type="text" id="Nt">
-        <label for="t">t:</label>
-        <input type="text" id="t">
+        <label for="tiempoThalf" id="tiempoThalf">t<sup></sup></label>
     </div>
 
     <div class="calculos">
         <label for="T">Vida media T:</label>
         <input type="text" id="T">
+        <label for="tiempoT" id="tiempoT">t<sup></sup></label>
     </div>
 
     <h2>Realizar los cálculos</h2>
@@ -71,23 +80,11 @@
         <input type="text" id="cuantoQueda">
     </div>
 
-
-    <!-- Agrega este elemento HTML en tu página -->
-    <br>
-    <span>Resultado n0: </span>
-    <span id="resultadon0">0</span> <br>
-    <br>
-    <span>Resultado K: </span> 
-    <span id="resultadoK">0</span><br>
-    <br>
-    <span id="resultadot1/2">Resultado t1/2: </span><br>
-    <br>
-    <span id="resultadoNt">Resultado Nt: </span><br>
-    <br>
-    <span id="resultadot">Resultado t: </span><br>
-    <br>
-    <span id="resultadoT">Resultado T: </span><br>
-
+    <div class="Resultados" id="divResultadosK" style="display: none;">
+        <h1>hola mundo</h1>
+        <img id = "img1" src="C:\Users\natha\OneDrive\Escritorio\Archivos nathan\Repos\Desintegracion-Radioactiva\Resources\84c1e6c6-2254-4b27-8107-eab8f1622f4a.jfif" alt="Formula" width="100" height="70">
+        <img id = "img2" src="C:\Users\natha\OneDrive\Escritorio\Archivos nathan\Repos\Desintegracion-Radioactiva\Resources\tHalf.jfif" width="100" height="70">
+    </body>
+    </div>
 </body>
-
 </html>

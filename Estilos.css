@@ -1,5 +1,5 @@
 body {
-    background-color: #F0EFE7;
+    background-color: #281F47;
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: #333333;
@@ -10,13 +10,13 @@ h1 {
     margin-top: 20px 0;
     margin-bottom: 10px;
     font-size: 36px;
-    color: #880015;
+    color: #ffffff;
 }
 
 h2 {
     text-align: center;
     font-size: 24px;
-    color: #880015;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
@@ -32,10 +32,11 @@ label {
     align-items: center;
     justify-content: center;
     margin: 5px;
+    color: #ffffff;
 }
 
 button {
-    background-color: #880015;
+    background-color: #625780;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -46,7 +47,7 @@ button {
 }
 
 button:hover {
-    background-color: #b61d29;
+    background-color: #9786c7;
 }
 
 .calculos {
@@ -66,4 +67,19 @@ button:hover {
     margin: 0 auto;
     display: block;
     margin-top: 10px;
+}
+
+span{
+    color: #ffffff;
+}
+
+.comboTiempo button{
+    margin: 0px;
+    margin-left: 5px;
+    padding: 7px 15px;
+    font-size: 14px;
+}
+
+.Resultados{
+    text-align: center;
 }
