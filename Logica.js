@@ -1,63 +1,83 @@
 let K;
 let comboTiempoGeneral = document.getElementById("tiempoGeneral").value;
-var image1 = document.getElementById("img1");
-var image2 = document.getElementById("img2");
+var imgT = document.getElementById("foto1");
+var imgThalf = document.getElementById("foto2");
 
-function calculoK() {
-    let tHalf = document.getElementById('t1/2').value;
-    let T = document.getElementById('T').value;
-
-    if (tHalf !== '') {
-        K = -Math.log(2) / tHalf;
-        mostrarResultadoK(K);
-        image1.style.display = "none";
-        image2.style.display = "block";
-    } else if (T !== '') {
-        K = 1 / -T;
-        mostrarResultadoK(K);
-        image1.style.display = "block";
-        image2.style.display = "none";
+function validarTiempoYCalcular(funcionCalculo) {
+    var selectElement = document.getElementById("tiempoGeneral");
+    if (selectElement.disabled) {
+        funcionCalculo();
+    } else {
+        alert("Por favor, envía el tiempo antes de realizar los cálculos.");
     }
-
-    var claseResultado = document.getElementById("divResultadosK");
-    claseResultado.style.display = "block";
 }
 
-
-function mostrarResultadoK(resultado) {
-    let resultadoElement = document.getElementById('K');
+function mostrarResultado(resultado, idElemento) {
+    let resultadoElement = document.getElementById(idElemento);
     resultadoElement.value = resultado;
     resultadoElement.disabled = true;
 }
 
+function calculoK() {
+    let tHalf = document.getElementById('t1/2').value;
+    let T = document.getElementById('T').value;
+    let imgT = document.getElementById("foto1");
+    let imgThalf = document.getElementById("foto2");
+    let claseResultado = document.getElementById("divResultadosK");
+    let btnCalculoK = document.getElementById('btnCalculo_K');
+
+    validarTiempo();
+
+    if (tHalf !== '' || T !== '') {
+        if (tHalf !== '') {
+            K = -Math.log(2) / tHalf;
+            mostrarResultado(K, 'K');
+            if (imgThalf !== undefined) {
+                imgT.style.display = "none";
+                imgThalf.style.visibility = "visible";
+            }
+        } else if (T !== '') {
+            K = 1 / -T;
+            mostrarResultado(K, 'K');
+            if (imgT !== undefined) {
+                imgT.style.visibility = "visible";
+                imgThalf.style.display = "none";
+            }
+        }
+        claseResultado.style.display = "block";
+        btnCalculoK.style.display = "none";
+        btnCalculoK.classList.add("disabled-button");
+
+        var mostrarFormulaButton = document.getElementById('mostrarFormulaButton');
+        mostrarFormulaButton.style.visibility = 'visible';
+    } else {
+        alert("Ingresa al menos un valor en los campos");
+    }
+}
 
 function calculoThalf() {
-
     let auxK = document.getElementById('K').value;
     let tHalf;
 
-    if (auxK !== '' || K !== undefined) {
+    if (auxK !== '') {
+        let K = parseFloat(auxK);
         tHalf = Math.log(2) / K;
-        alert(tHalf.toFixed(3));
+        mostrarResultado(tHalf, 't1/2');
     } else {
-        // Alguno de los campos está vacío, muestra un mensaje de error o realiza alguna acción apropiada
         alert("Se recomienda llenar K para encontrar t1/2");
     }
 }
 
 function calculoT() {
+    validarTiempo();
     let auxK = document.getElementById('K').value;
     let T;
 
-    let op = prompt("¿Qué desea saber del tiempo?\n" +
-        "1. ¿Cuánta cantidad se ha sido desintegrado?\n" +
-        "2. ¿Cuánto queda?");
-
-    if (auxK !== '' || K !== undefined) {
+    if (auxK !== '') {
+        let K = parseFloat(auxK);
         T = 1 / K;
-        alert(T.toFixed(3));
+        mostrarResultado(T, 'T');
     } else {
-        // Alguno de los campos está vacío, muestra un mensaje de error o realiza alguna acción apropiada
         alert("Se recomienda llenar K para encontrar T");
     }
 }
@@ -136,6 +156,13 @@ function inhabilitarTiempo() {
     labelK.innerHTML = selectedValue + "<sup>-1</sup>";
     labelThalf.innerHTML = selectedValue;
     labelT.innerHTML = selectedValue;
+}
+
+function validarTiempo() {
+    var selectElement = document.getElementById("tiempoGeneral");
+    if (!selectElement.disabled) {
+        alert("Por favor, envía el tiempo antes de realizar los cálculos.");
+    }
 }
 
 

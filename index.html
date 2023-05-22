@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desintegracion radioactiva</title>
-    <script src="Logica.js"></script>
-    <link rel="stylesheet" type="text/css" href="Estilos.css">
+    <link rel="stylesheet" type="text/css" href="Styles.css">
 </head>
 
 <body>
@@ -15,14 +14,14 @@
 
     <label>Asegurate de llenar al menos un valor</label>
 
-    <div class="comboTiempo"style="text-align: center;">
+    <div class="comboTiempo" style="text-align: center;">
         <label>Escoge un tiempo para tus calculos<label>
-        <select id="tiempoGeneral">
-            <option value="Horas">Horas</option>
-            <option value="Dias">Dias</option>
-            <option value="Años">Años</option>
-        </select>
-        <button id="submitTime" onclick=inhabilitarTiempo()>Enviar</button>
+                <select id="tiempoGeneral">
+                    <option value="Horas">Horas</option>
+                    <option value="Dias">Dias</option>
+                    <option value="Años">Años</option>
+                </select>
+                <button id="submitTime" onclick=inhabilitarTiempo()>Enviar</button>
     </div>
 
     <div class="calculos">
@@ -52,11 +51,17 @@
 
     <div id="resultados">
         <div style="text-align: center;">
-            <button id="btnCalculo_K" onclick="calculoK()">Calcular K</button>
-            <button id="btnCalculo_tHalf" onclick="calculoThalf()">Calcular t1/2</button>
-            <button id="btnCalculoT" onclick="calculoT()">Calcular T</button>
-            <button id="btnCalculoNt" onclick="calculoNt()">Calcular Nt</button>
-            <button id="btnCalculoTiempo" onclick="calculoTiempo()">Calcular t</button>
+            <button id="btnCalculo_K" onclick="validarTiempoYCalcular(calculoK)">Calcular K</button>
+            <button id="btnCalculo_tHalf" onclick="validarTiempoYCalcular(calculoThalf)">Calcular t1/2</button>
+            <button id="btnCalculoT" onclick="validarTiempoYCalcular(calculoT)">Calcular T</button>
+            <button id="btnCalculoNt" onclick="validarTiempoYCalcular(calculoNt)">Calcular Nt</button>
+            <button id="btnCalculoTiempo" onclick="validarTiempoYCalcular(calculoTiempo)">Calcular t</button>
+        </div>
+    </div>
+
+    <div id="Formulas">
+        <div style="text-align: center;">
+            <button id="mostrarFormulaButton" style="visibility: hidden;">Mostrar fórmula</button>
         </div>
     </div>
 
@@ -82,9 +87,11 @@
 
     <div class="Resultados" id="divResultadosK" style="display: none;">
         <h1>hola mundo</h1>
-        <img id = "img1" src="C:\Users\natha\OneDrive\Escritorio\Archivos nathan\Repos\Desintegracion-Radioactiva\Resources\84c1e6c6-2254-4b27-8107-eab8f1622f4a.jfif" alt="Formula" width="100" height="70">
-        <img id = "img2" src="C:\Users\natha\OneDrive\Escritorio\Archivos nathan\Repos\Desintegracion-Radioactiva\Resources\tHalf.jfif" width="100" height="70">
-    </body>
+        <img src="Resources\T.jpeg" id="foto1" width="100" height="70">
+        <img src="Resources\tHalf.jpeg" id="foto2" width="100" height="70">
     </div>
+
+    <script src="Logica.js"></script>
 </body>
+
 </html>
