@@ -12,6 +12,19 @@ function validarTiempoYCalcular(funcionCalculo) {
     }
 }
 
+function inhabilitarTiempo() {
+    var selectElement = document.getElementById("tiempoGeneral");
+    selectElement.disabled = true;
+    selectElement = document.getElementById("tiempoGeneral");
+    var labelK = document.getElementById("tiempoK");
+    var labelThalf = document.getElementById("tiempoThalf");
+    var labelT = document.getElementById("tiempoT");
+    var selectedValue = selectElement.value;
+    labelK.innerHTML = selectedValue + "<sup>-1</sup>";
+    labelThalf.innerHTML = selectedValue;
+    labelT.innerHTML = selectedValue;
+}
+
 function mostrarResultado(resultado, idElemento) {
     let resultadoElement = document.getElementById(idElemento);
     resultadoElement.value = resultado;
@@ -21,29 +34,18 @@ function mostrarResultado(resultado, idElemento) {
 function calculoK() {
     let tHalf = document.getElementById('t1/2').value;
     let T = document.getElementById('T').value;
-    let imgT = document.getElementById("foto1");
-    let imgThalf = document.getElementById("foto2");
-    let claseResultado = document.getElementById("divResultadosK");
     let btnCalculoK = document.getElementById('btnCalculo_K');
 
     if (tHalf !== '' || T !== '') {
         if (tHalf !== '') {
             K = -Math.log(2) / tHalf;
             mostrarResultado(K, 'K');
-            if (imgThalf !== undefined) {
-                imgT.style.display = "none";
-                imgThalf.style.visibility = "visible";
-            }
         } else if (T !== '') {
             K = 1 / -T;
             mostrarResultado(K, 'K');
-            if (imgT !== undefined) {
-                imgT.style.visibility = "visible";
-                imgThalf.style.display = "none";
-            }
         }
-        btnCalculoK.classList.add("disabled-button");
         btnCalculoK.disabled = true;
+        btnCalculoK.classList.add("disabled-button");
     } else { 
         alert("Ingresa al menos un valor en los campos");
     }
@@ -58,22 +60,24 @@ function calculoThalf() {
         let K = parseFloat(auxK);
         tHalf = Math.log(2) / K;
         mostrarResultado(tHalf, 't1/2');
+        btnCalculoThalf.disabled = true;
         btnCalculoThalf.classList.add("disabled-button");
     } else {
         alert("Se recomienda llenar K para encontrar t1/2");
     }
 }
 
-
 function calculoT() {
-    validarTiempo();
     let auxK = document.getElementById('K').value;
     let T;
+    let btnCalculoT = document.getElementById('btnCalculoT');
 
     if (auxK !== '') {
         let K = parseFloat(auxK);
         T = 1 / K;
         mostrarResultado(T, 'T');
+        btnCalculoT.disabled = true;
+        btnCalculoT.classList.add("disabled-button");
     } else {
         alert("Se recomienda llenar K para encontrar T");
     }
@@ -142,24 +146,7 @@ function calculoTiempo() {
     }
 }
 
-function inhabilitarTiempo() {
-    var selectElement = document.getElementById("tiempoGeneral");
-    selectElement.disabled = true;
-    selectElement = document.getElementById("tiempoGeneral");
-    var labelK = document.getElementById("tiempoK");
-    var labelThalf = document.getElementById("tiempoThalf");
-    var labelT = document.getElementById("tiempoT");
-    var selectedValue = selectElement.value;
-    labelK.innerHTML = selectedValue + "<sup>-1</sup>";
-    labelThalf.innerHTML = selectedValue;
-    labelT.innerHTML = selectedValue;
-}
 
-function validarTiempo() {
-    var selectElement = document.getElementById("tiempoGeneral");
-    if (!selectElement.disabled) {
-        alert("Por favor, envía el tiempo antes de realizar los cálculos.");
-    }
-}
+
 
 
