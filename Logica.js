@@ -26,8 +26,6 @@ function calculoK() {
     let claseResultado = document.getElementById("divResultadosK");
     let btnCalculoK = document.getElementById('btnCalculo_K');
 
-    validarTiempo();
-
     if (tHalf !== '' || T !== '') {
         if (tHalf !== '') {
             K = -Math.log(2) / tHalf;
@@ -44,13 +42,9 @@ function calculoK() {
                 imgThalf.style.display = "none";
             }
         }
-        claseResultado.style.display = "block";
-        btnCalculoK.style.display = "none";
         btnCalculoK.classList.add("disabled-button");
-
-        var mostrarFormulaButton = document.getElementById('mostrarFormulaButton');
-        mostrarFormulaButton.style.visibility = 'visible';
-    } else {
+        btnCalculoK.disabled = true;
+    } else { 
         alert("Ingresa al menos un valor en los campos");
     }
 }
@@ -58,15 +52,18 @@ function calculoK() {
 function calculoThalf() {
     let auxK = document.getElementById('K').value;
     let tHalf;
+    let btnCalculoThalf = document.getElementById('btnCalculo_tHalf');
 
-    if (auxK !== '') {
+    if (auxK) {
         let K = parseFloat(auxK);
         tHalf = Math.log(2) / K;
         mostrarResultado(tHalf, 't1/2');
+        btnCalculoThalf.classList.add("disabled-button");
     } else {
         alert("Se recomienda llenar K para encontrar t1/2");
     }
 }
+
 
 function calculoT() {
     validarTiempo();
