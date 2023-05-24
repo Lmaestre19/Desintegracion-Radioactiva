@@ -51,18 +51,19 @@
         <label for="Nt">Cantidad Nt:</label>
         <input type="text" id="Nt">
         <label for="tiempoNt" id="tiempoNt">t</label>
-      </div>
-      
-      <div class="calculos">
+    </div>
+
+    <div class="calculos">
         <label for="t">Tiempo t:</label>
         <input type="text" id="t">
         <label for="tiempot" id="tiempot">t</label>
-      </div>
-      
+    </div>
+
 
     <h2>Realizar los cálculos</h2>
 
     <div id="resultados">
+        <h2 id="resultado"></h2>
         <div style="text-align: center;">
             <button id="btnCalculo_K" onclick="validarTiempoYCalcular(calculoK)">Calcular K</button>
             <button id="btnCalculo_tHalf" onclick="validarTiempoYCalcular(calculoThalf)">Calcular t1/2</button>
@@ -70,11 +71,10 @@
             <button id="btnCalculoNt" onclick="validarTiempoYCalcular(mostrarNt)">Calcular Nt</button>
             <button id="btnCalculoTiempo" onclick="validarTiempoYCalcular(mostrarCalculoTiempo)">Calcular t</button>
         </div>
-       <h2 id="resultado"></h2>
         <div style="text-align: center;">
             <button id="btnReset" onclick="resetearValores()">Restablecer valores</button>
-         </div>
-       
+            <button onclick="desplegarImagenes()">Mostrar formulas</button>
+        </div>
     </div>
 
     <div class="Tiempo" id="divTiempo" style="display: none;">
@@ -95,7 +95,8 @@
             <option value="Cantidad">Cantidad</option>
         </select>
         <input type="text" id="cuantoQueda">
-        <button id="btnCalculotiempo" onclick="calculoTiempo('cuantoQueda', 'cuantoQuedaSelect')">Calcular tiempo</button>
+        <button id="btnCalculotiempo" onclick="calculoTiempo('cuantoQueda', 'cuantoQuedaSelect')">Calcular
+            tiempo</button>
         <p id="resultadoTiempo"></p>
     </div>
 
@@ -107,6 +108,26 @@
     </div>
 
     <script src="Logica.js"></script>
+
+    <div id="contenedor" style="display: none;">
+        <div>
+            <h2>Formula K</h2>
+            <img src="Resources/tHalf.jpeg" alt="Imagen 2" width="170" height="140">
+        </div>
+        <div>
+            <h2>Formula t<sup>1/2</sub></h2>
+            <img src="Resources/thalf.jpg" alt="Imagen 1" width="170" height="120">
+        </div>
+        <div>
+            <h2>Formula T</h2>
+            <img src="Resources/T.jpeg" alt="Imagen 1" width="170" height="140">
+        </div>
+        <div>
+            <h2>Formula Nt</h2>
+            <img src="Resources/Nt.jpg" alt="Imagen 1" width="130" height="60">
+        </div>
+    </div>
+
 </body>
 
 </html>

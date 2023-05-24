@@ -84,3 +84,17 @@ button:hover {
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+#contenedor {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #contenedor > div {
+    margin-right: 10px; /* Espacio entre las imágenes */
+  }
+  
+  #contenedor img {
+    margin: 0; /* Elimina los márgenes predeterminados */
+  }
+  
