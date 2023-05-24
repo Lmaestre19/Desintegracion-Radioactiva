@@ -7,32 +7,39 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 20px 0;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 0px;
     font-size: 36px;
     color: #ffffff;
 }
 
 h2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     color: #ffffff;
     margin-bottom: 10px;
 }
 
 input {
-    display: flex;
-    padding: 5px;
-    width: 200px;
-    margin-left: 10px;
+    align-items: center;
+    margin-right: 5px;
+    width: 150px;
+    padding: 3px;
 }
 
 label {
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    align-items: center; 
     justify-content: center;
     margin: 5px;
     color: #ffffff;
+    width: 200px;
+}
+
+.calculos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button {
@@ -50,45 +57,29 @@ button:hover {
     background-color: #9786c7;
 }
 
-.calculos {
-    display: flex;
-    justify-content: center;
-    margin: 10px;
-}
-
-.Tiempo{
+.Tiempo {
     display: flex;
     text-align: center;
     justify-content: center;
     margin: 10px;
 }
 
-.Tiempo input{
+.Tiempo input {
     margin: 0 auto;
     display: block;
     margin-top: 10px;
 }
 
-span{
-    color: #ffffff;
-}
 
-.comboTiempo button{
+.comboTiempo button {
     margin: 0px;
     margin-left: 5px;
     padding: 7px 15px;
     font-size: 14px;
 }
 
-.Resultados{
-    text-align: center;
-}
-
-.Formulas{
-    text-align: center;
-}
 
 .disabled-button {
-    opacity: 0.5; /* Reduce la opacidad del botón */
-    cursor: not-allowed; /* Cambia el cursor a "no permitido" */
+    opacity: 0.5;
+    cursor: not-allowed;
 }

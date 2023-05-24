@@ -39,10 +39,10 @@ function calculoK() {
     if (tHalf !== '' || T !== '') {
         if (tHalf !== '') {
             K = -Math.log(2) / tHalf;
-            mostrarResultado(K, 'K');
+            mostrarResultado(K.toFixed(3), 'K');
         } else if (T !== '') {
             K = 1 / -T;
-            mostrarResultado(K, 'K');
+            mostrarResultado(K.toFixed(3), 'K');
         }
         btnCalculoK.disabled = true;
         btnCalculoK.classList.add("disabled-button");
