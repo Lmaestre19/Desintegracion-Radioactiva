@@ -23,6 +23,10 @@
                 <button id="submitTime" onclick=inhabilitarTiempo()>Enviar</button>
     </div>
 
+    <div class="Ecuacion-general" style="text-align: center; color: white;" >
+        <h3 id="Ec_general">Nt = N0</sub>e<sup>-k*t</sup></h3>
+    </div>
+
     <div class="calculos">
         <label for="N0">Cantidad Inicial N<sub>0</sub>:</label>
         <input type="text" id="n0">
@@ -50,7 +54,7 @@
     <div class="calculos">
         <label for="Nt">Cantidad Nt:</label>
         <input type="text" id="Nt">
-        <label for="tiempoNt" id="tiempoNt">t</label>
+        <label for="tiempoNt" id="tiempoNt"> </label>
     </div>
 
     <div class="calculos">
@@ -63,8 +67,9 @@
     <h2>Realizar los cálculos</h2>
 
     <div id="resultados">
-        <h2 id="resultado"></h2>
+        <h2 id="resultado" style="color: yellow"></h2>
         <div style="text-align: center;">
+            <button id="submitN0" onclick="enviarN0()">Enviar N<sub>0</sub></button>
             <button id="btnCalculo_K" onclick="validarTiempoYCalcular(calculoK)">Calcular K</button>
             <button id="btnCalculo_tHalf" onclick="validarTiempoYCalcular(calculoThalf)">Calcular t1/2</button>
             <button id="btnCalculoT" onclick="validarTiempoYCalcular(calculoT)">Calcular T</button>
@@ -109,22 +114,25 @@
 
     <script src="Logica.js"></script>
 
+    <div id="Formula-general" style="display: none;">
+        <div>
+            <h2>Formula General</h2>
+            <img src="Resources/Nt.jpg" alt="Imagen 1" width="130" height="">
+        </div>
+    </div>
+
     <div id="contenedor" style="display: none;">
         <div>
             <h2>Formula K</h2>
-            <img src="Resources/tHalf.jpeg" alt="Imagen 2" width="170" height="140">
+            <img src="Resources/tHalf.jpeg" alt="Imagen 2" width="" height="80">
         </div>
         <div>
             <h2>Formula t<sup>1/2</sub></h2>
-            <img src="Resources/thalf.jpg" alt="Imagen 1" width="170" height="120">
+            <img src="Resources/thalf.jpg" alt="Imagen 1" width="" height="60">
         </div>
         <div>
             <h2>Formula T</h2>
-            <img src="Resources/T.jpeg" alt="Imagen 1" width="170" height="140">
-        </div>
-        <div>
-            <h2>Formula Nt</h2>
-            <img src="Resources/Nt.jpg" alt="Imagen 1" width="130" height="60">
+            <img src="Resources/T.jpg" alt="Imagen 1" width="" height="60">
         </div>
     </div>
 

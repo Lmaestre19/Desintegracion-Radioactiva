@@ -3,6 +3,7 @@ let comboTiempoGeneral = document.getElementById("tiempoGeneral").value;
 var imgT = document.getElementById("foto1");
 var imgThalf = document.getElementById("foto2");
 let resultado = document.getElementById("resultado");
+let ecuacionG = document.getElementById("Ec_general");
 
 function validarTiempoYCalcular(funcionCalculo) {
     var selectElement = document.getElementById("tiempoGeneral");
@@ -27,10 +28,8 @@ function inhabilitarTiempo() {
     labelThalf.innerHTML = selectedValue;
     labelT.innerHTML = selectedValue;
 
-    var labelNt = document.getElementById("tiempoNt");
     var labelt = document.getElementById("tiempot");
 
-    labelNt.innerHTML = selectedValue;
     labelt.innerHTML = selectedValue;
 }
 
@@ -42,26 +41,52 @@ function mostrarResultado(resultado, idElemento) {
 
 function calculoK() {
     ocultarElementos();
+    let inputK = document.getElementById('K').value;
     let tHalf = document.getElementById("t1/2").value;
     let T = document.getElementById("T").value;
     let btnCalculoK = document.getElementById("btnCalculo_K");
-
-    if (tHalf !== "" || T !== "") {
-        if (tHalf !== "") {
-            K = -Math.log(2) / tHalf;
-            mostrarResultado(K.toFixed(3), "K");
-            resultado.innerHTML =
-                "La constante de desintegración K es: " + K.toFixed(3);
-        } else if (T !== "") {
-            K = 1 / -T;
-            mostrarResultado(K.toFixed(3), "K");
-            resultado.innerHTML =
-                "La constante de desintegración K es: " + K.toFixed(3);
+    if (inputK !== "") {
+        mostrarResultado(inputK, "K");
+        resultado.innerHTML =
+            "La constante de desintegración K es: " + (inputK < 0 ? "-" : "-") + Math.abs(inputK) + " " +
+            comboTiempoGeneral + "<sup>-1</sup>";
+        if (inputK < 0) {
+            ecuacionG.innerHTML = ecuacionG.innerHTML.replace("-k", inputK);
+        } else {
+            ecuacionG.innerHTML = ecuacionG.innerHTML.replace("k", inputK);
         }
         btnCalculoK.disabled = true;
         btnCalculoK.classList.add("disabled-button");
     } else {
-        alert("Ingresa al menos un valor en los campos");
+        if (tHalf !== "" || T !== "") {
+            if (tHalf !== "") {
+                K = -Math.log(2) / tHalf;
+                mostrarResultado(K.toFixed(3), "K");
+                resultado.innerHTML =
+                    "La constante de desintegración K es: " + (K < 0 ? "-" : "-") + Math.abs(K.toFixed(3)) + " " +
+                    comboTiempoGeneral + "<sup>-1</sup>";
+                if (K < 0) {
+                    ecuacionG.innerHTML = ecuacionG.innerHTML.replace("-k", K.toFixed(3));
+                } else {
+                    ecuacionG.innerHTML = ecuacionG.innerHTML.replace("k", K.toFixed(3));
+                }
+            } else if (T !== "") {
+                K = 1 / -T;
+                mostrarResultado(K.toFixed(3), "K");
+                resultado.innerHTML =
+                    "La constante de desintegración K es: " + (K < 0 ? "-" : "-") + Math.abs(K.toFixed(3)) + " " +
+                    comboTiempoGeneral + "<sup>-1</sup>";
+                if (inputK < 0) {
+                    ecuacionG.innerHTML = ecuacionG.innerHTML.replace("-k", K.toFixed(3));
+                } else {
+                    ecuacionG.innerHTML = ecuacionG.innerHTML.replace("k", K.toFixed(3));
+                }
+            }
+            btnCalculoK.disabled = true;
+            btnCalculoK.classList.add("disabled-button");
+        } else {
+            alert("Ingresa al menos un valor en los campos");
+        }
     }
 }
 
@@ -71,35 +96,56 @@ function calculoThalf() {
     let auxK = document.getElementById("K").value;
     let tHalf;
     let btnCalculoThalf = document.getElementById("btnCalculo_tHalf");
+    let inputThalf = document.getElementById("t1/2").value;
 
-    if (auxK) {
-        let K = parseFloat(auxK);
-        tHalf = Math.log(2) / K;
-        mostrarResultado(tHalf.toFixed(3), "t1/2");
+    if (inputThalf !== "") {
+        mostrarResultado(inputThalf, "t1/2");
         resultado.innerHTML =
-            "El periodo de semidesintegración t1/2 es: " + tHalf.toFixed(3);
+            "El periodo de semidesintegración t1/2 es: " + inputThalf +
+            " " + comboTiempoGeneral;
         btnCalculoThalf.disabled = true;
         btnCalculoThalf.classList.add("disabled-button");
     } else {
-        alert("Se recomienda llenar K para encontrar t1/2");
+        if (auxK) {
+            let K = parseFloat(auxK);
+            tHalf = Math.log(2) / K;
+            mostrarResultado(tHalf.toFixed(3), "t1/2");
+            resultado.innerHTML =
+                "El periodo de semidesintegración t1/2 es: " + tHalf.toFixed(3) +
+                " " + comboTiempoGeneral;
+            btnCalculoThalf.disabled = true;
+            btnCalculoThalf.classList.add("disabled-button");
+        } else {
+            alert("Se recomienda llenar K para encontrar t1/2");
+        }
     }
 }
 
 function calculoT() {
     ocultarElementos();
+    let inputT = document.getElementById("T").value;
     let auxK = document.getElementById("K").value;
     let T;
     let btnCalculoT = document.getElementById("btnCalculoT");
 
-    if (auxK !== "") {
-        let K = parseFloat(auxK);
-        T = 1 / K;
-        mostrarResultado(T.toFixed(3), "T");
-        resultado.innerHTML = "La vida media T es: " + T.toFixed(3);
+    if (inputT !== "") {
+        mostrarResultado(inputT, "T");
+        resultado.innerHTML = "La vida media T es: " + inputT +
+            " " + comboTiempoGeneral;
         btnCalculoT.disabled = true;
         btnCalculoT.classList.add("disabled-button");
     } else {
-        alert("Se recomienda llenar K para encontrar T");
+        if (auxK !== "") {
+            let K = parseFloat(auxK);
+            T = 1 / K;
+            mostrarResultado(T.toFixed(3), "T");
+            resultado.innerHTML = "La vida media T es: " + T.toFixed(3) +
+                " " + comboTiempoGeneral;
+            btnCalculoT.disabled = true;
+            btnCalculoT.classList.add("disabled-button");
+        } else {
+            alert("Se recomienda llenar K para encontrar T");
+        }
     }
 }
 
@@ -132,6 +178,7 @@ function calculoNt() {
 
     let Nt = n0 * Math.pow(Math.E, -K * t);
     mostrarResultado(Nt.toFixed(3), "Nt");
+    resultado.innerHTML = "La cantidad Nt que queda en el tiempo " + t + " " + comboTiempoGeneral + " es de: " + Nt.toFixed(3);
 }
 
 function mostrarCalculoTiempo() {
@@ -185,13 +232,20 @@ function calculoTiempo(campo, valorCombo) {
         if (comboBoxValue === "Porcentaje") {
             let Nt = 1 - cantidadValue / 100;
 
-            let resultado = Math.log(Nt / n0) / K;
-            mostrarResultado(resultado.toFixed(3), "t");
+            let resultadoP = Math.log(Nt / n0) / -(Math.abs(K));
+            mostrarResultado(resultadoP.toFixed(3), "t");
+            resultado.innerHTML =
+            "El tiempo que tarda en desintegrarse el  "+cantidadValue+"%" +
+            " es de: "+ resultadoP.toFixed(3) ;
         } else {
-            let cantidad = 1 - cantidadValue;
+            console.log(cantidadValue)
+            let cantidad = cantidadValue - 1;
+            let resultadoC = Math.log(cantidad) / -(Math.abs(K));
 
-            let resultado = Math.log(cantidad) / K;
-            mostrarResultado(resultado.toFixed(3), "t");
+            mostrarResultado(resultadoC.toFixed(3), "t");
+            resultado.innerHTML =
+            "El tiempo que tarda en desintegrarse "+cantidadValue+
+            " de la cantidad es: "+ resultadoC.toFixed(3);
         }
     } else {
         let comboBoxValue = document.getElementById("cuantoQuedaSelect").value;
@@ -199,13 +253,19 @@ function calculoTiempo(campo, valorCombo) {
             let porcentaje = parseFloat(document.getElementById("cuantoQueda").value);
             porcentaje = porcentaje / 100;
 
-            let resultado = Math.log(porcentaje / n0) / K;
-            mostrarResultado(resultado.toFixed(3), "t");
+            let resultadoP = Math.log(porcentaje / n0) / -(Math.abs(K));
+            mostrarResultado(resultadoP.toFixed(3), "t");
+            resultado.innerHTML =
+            "El tiempo que tarda en que solo quede el "+cantidadValue+"%" +
+            " de la cantidad inicial es de: "+ resultadoP.toFixed(3) ;
         } else {
             let cantidad = parseFloat(document.getElementById("cuantoQueda").value);
 
-            let resultado = Math.log(cantidad) / K;
-            mostrarResultado(resultado.toFixed(3), "t");
+            let resultadoC = Math.log(cantidad) / -(Math.abs(K));
+            mostrarResultado(resultadoC.toFixed(3), "t");
+            resultado.innerHTML =
+            "El tiempo que tarda en que solo quede el "+cantidadValue+
+            " de la cantidad inicial es de: "+ resultadoC.toFixed(3) ;
         }
     }
 }
@@ -243,6 +303,7 @@ function resetearValores() {
     var labelNt = document.getElementById("tiempoNt");
     var labelt = document.getElementById("tiempot");
 
+    ecuacionG.innerHTML = "Nt = N0</sub>e<sup>-k*t</sup>"
     labelK.innerHTML = "t<sup>-1</sup>";
     labelThalf.innerHTML = "t";
     labelT.innerHTML = "t";
@@ -278,10 +339,28 @@ function resetearValores() {
 function desplegarImagenes() {
     ocultarElementos();
     let contenedor = document.getElementById("contenedor");
+    let formulaG = document.getElementById("Formula-general");
 
-    if (contenedor.style.display === "none") {
+    if (contenedor.style.display === "none" && formulaG.style.display === "none") {
         contenedor.style.display = "flex";
+        formulaG.style.display = "flex";
     } else {
         contenedor.style.display = "none";
+        formulaG.style.display = "none";
     }
+}
+
+function enviarN0() {
+    let n0 = document.getElementById("n0").value;
+    if (n0 !== "") {
+        mostrarResultado(n0, 'n0');
+        ecuacionG.innerHTML = ecuacionG.innerHTML.replaceAll("N0", n0);
+        let buttonN0 = document.getElementById("submitN0");
+        buttonN0.disabled = true;;
+        buttonN0.classList.add("disabled-button");
+    } else {
+        alert("Ingrese un valor");
+        return;
+    }
+
 }

@@ -29,7 +29,7 @@ input {
 
 label {
     display: inline-block;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     margin: 5px;
     color: #ffffff;
@@ -88,13 +88,19 @@ button:hover {
 #contenedor {
     display: flex;
     justify-content: center;
-  }
-  
-  #contenedor > div {
-    margin-right: 10px; /* Espacio entre las imágenes */
-  }
-  
-  #contenedor img {
-    margin: 0; /* Elimina los márgenes predeterminados */
-  }
-  
+}
+
+#contenedor>div {
+    margin-right: 40px;
+    /* Espacio entre las imágenes */
+}
+
+#contenedor img {
+    margin: 0;
+    /* Elimina los márgenes predeterminados */
+}
+
+#Formula-general {
+    display: flex;
+    justify-content: center;
+}
