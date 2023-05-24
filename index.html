@@ -47,6 +47,19 @@
         <label for="tiempoT" id="tiempoT">t<sup></sup></label>
     </div>
 
+    <div class="calculos">
+        <label for="Nt">Cantidad Nt:</label>
+        <input type="text" id="Nt">
+        <label for="tiempoNt" id="tiempoNt">t</label>
+      </div>
+      
+      <div class="calculos">
+        <label for="t">Tiempo t:</label>
+        <input type="text" id="t">
+        <label for="tiempot" id="tiempot">t</label>
+      </div>
+      
+
     <h2>Realizar los cálculos</h2>
 
     <div id="resultados">
@@ -54,9 +67,14 @@
             <button id="btnCalculo_K" onclick="validarTiempoYCalcular(calculoK)">Calcular K</button>
             <button id="btnCalculo_tHalf" onclick="validarTiempoYCalcular(calculoThalf)">Calcular t1/2</button>
             <button id="btnCalculoT" onclick="validarTiempoYCalcular(calculoT)">Calcular T</button>
-            <button id="btnCalculoNt" onclick="validarTiempoYCalcular(calculoNt)">Calcular Nt</button>
-            <button id="btnCalculoTiempo" onclick="validarTiempoYCalcular(calculoTiempo)">Calcular t</button>
+            <button id="btnCalculoNt" onclick="validarTiempoYCalcular(mostrarNt)">Calcular Nt</button>
+            <button id="btnCalculoTiempo" onclick="validarTiempoYCalcular(mostrarCalculoTiempo)">Calcular t</button>
         </div>
+       <h2 id="resultado"></h2>
+        <div style="text-align: center;">
+            <button id="btnReset" onclick="resetearValores()">Restablecer valores</button>
+         </div>
+       
     </div>
 
     <div class="Tiempo" id="divTiempo" style="display: none;">
@@ -66,8 +84,9 @@
             <option value="Cantidad">Cantidad</option>
         </select>
         <input type="text" id="cuantoPoC">
+        <button id="btnCalculotiempo" onclick="calculoTiempo('cuantoPoC','cuantoPoCSelect')">Calcular tiempo</button>
+        <p id="resultadoTiempo"></p>
     </div>
-
 
     <div class="Tiempo" id="divQueda" style="display: none;">
         <h2>¿Cuánta cantidad queda?</h2>
@@ -76,13 +95,16 @@
             <option value="Cantidad">Cantidad</option>
         </select>
         <input type="text" id="cuantoQueda">
+        <button id="btnCalculotiempo" onclick="calculoTiempo('cuantoQueda', 'cuantoQuedaSelect')">Calcular tiempo</button>
+        <p id="resultadoTiempo"></p>
     </div>
 
-    <!-- <div class="Resultados" id="divResultadosK" style="display: none;">
-        <h1>hola mundo</h1>
-        <img src="Resources\T.jpeg" id="foto1" width="100" height="70">
-        <img src="Resources\tHalf.jpeg" id="foto2" width="100" height="70">
-    </div> -->
+    <div class="Tiempo" id="divNt" style="display: none;">
+        <h2>Ingrese un tiempo para Nt</h2>
+        <input type="text" id="valortNt">
+        <button id="btnCalculotNt" onclick="calculoNt()">Calcular Nt</button>
+        <p id="resultadoTiempo"></p>
+    </div>
 
     <script src="Logica.js"></script>
 </body>
