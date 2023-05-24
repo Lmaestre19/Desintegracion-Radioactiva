@@ -239,7 +239,7 @@ function calculoTiempo(campo, valorCombo) {
             " es de: "+ resultadoP.toFixed(3) ;
         } else {
             console.log(cantidadValue)
-            let cantidad = cantidadValue - 1;
+            let cantidad = 1 - cantidadValue ;
             let resultadoC = Math.log(cantidad) / -(Math.abs(K));
 
             mostrarResultado(resultadoC.toFixed(3), "t");
